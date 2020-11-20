@@ -1,0 +1,56 @@
+<div>
+<?= data.full_name ?>,
+</div>
+
+<p>
+Congratulations! You were selected as a Liquor Park BCBS raffle winner! You have the opportunity to purchase the following bottle allotment:
+</p>
+
+<table>
+  <tr>
+    <td>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?= data.url ?>&size=200x200" alt="Winner verification" title="Winner verification" />
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center">
+      <span style="font-size:36px"><?= data.verification ?></span>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>2x Original</td>
+    <td>$12.99 per bottle</td>
+  </tr>
+  <tr>
+    <td>1x Special 4</td>
+    <td>$19.99 per bottle</td>
+  </tr>
+  <tr>
+    <td>1x Carmella</td>
+    <td>$19.99 per bottle</td>
+  </tr>
+  <tr>
+    <td>1x <?= data.allotment.bottle5name ?></td>
+    <td><?= data.allotment.bottle5price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td>1x <?= data.allotment.bottle6name ?></td>
+    <td><?= data.allotment.bottle6price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td><b>Total cost</b></td>
+    <td><b><?= data.total ?> (plus tax)</b></td>
+  </tr>
+</table>
+
+<p>
+  You must bring this email to pick up your allotment by Friday, December 11th or your allotment will be forfeited.
+</p>
+
+<div>
+  <div>Cheers,</div>
+  <div>Liquor Park</div>
+</div>
