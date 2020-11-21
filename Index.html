@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <script>
+    // Prevent forms from submitting.
+    function preventFormSubmit() {
+      var forms = document.querySelectorAll('form');
+      for (var i = 0; i < forms.length; i++) {
+        forms[i].addEventListener('submit', function(event) {
+          event.preventDefault();
+        });
+      }
+    }
+    window.addEventListener('load', preventFormSubmit);
+
+    function handleFormSubmit(formObject) {
+      formObject.submit.disabled = true;
+      google.script.run.withSuccessHandler(successHandler).processForm(formObject);
+    }
+
+    function successHandler(status) {
+      if (status != "OK") {
+        console.log(status);
+        document.getElementById("claimedInfo").innerHTML = status;
+        return
+      }
+      disableForm();
+      document.getElementById("claimedInfo").innerHTML = "Allotment successfully claimed!";
+    }
+
+    function disableForm(formObject) {
+      // Update confirm pickup form button display.
+      document.confirmForm.submit.classList.add("claimed");
+      document.confirmForm.submit.value = "Allotment Claimed";
+      document.confirmForm.submit.disabled = true;
+    }
+
+  </script>
+  <style>
+    html,
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      background-color: whitesmoke;
+      font-family: sans-serif;
+      color: #222;
+    }
+
+    #masthead img {
+      width: 100%;
+    }
+
+    #stuff .section {
+      margin: 20px;
+    }
+
+    .info {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .totalRow {
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    form {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    form input {
+      width: 100%;
+      padding: 20px;
+      font-size: 32px;
+      color: #222;
+
+      background-color: #92be8c;
+      border:1px solid #444;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+    }
+
+    form input.claimed {
+      background-color: #ddd;
+      color: #888;
+    }
+
+    #claimedInfo {
+      text-align: center;
+      font-size: -2em;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="masthead">
+    <img src="https://www.drinkliquorpark.com/static/raffleheader.png" />
+  </div>
+
+  <div id="stuff">
+
+    <div class="section">
+      <div>Name:</div>
+      <div class="info"><?= winner.full_name ?></div>
+    </div>
+
+    <div class="section">
+      <div>Pickup Code:</div>
+      <div class="info"><?= winner.verification ?></div>
+    </div>
+
+    <div class="section">
+      <div>Bottle Allotment:</div>
+      <table>
+        <tr>
+          <td>2x <?= winner.allotment[0].name ?></td>
+          <td><?= winner.allotment[0].price ?> per bottle</td>
+        </tr>
+        <tr>
+          <td>1x <?= winner.allotment[1].name ?></td>
+          <td><?= winner.allotment[1].price ?> per bottle</td>
+        </tr>
+        <tr>
+          <td>1x <?= winner.allotment[2].name ?></td>
+          <td><?= winner.allotment[2].price ?> per bottle</td>
+        </tr>
+        <tr>
+          <td>1x <?= winner.allotment[3].name ?></td>
+          <td><?= winner.allotment[3].price ?> per bottle</td>
+        </tr>
+        <tr>
+          <td>1x <?= winner.allotment[4].name ?></td>
+          <td><?= winner.allotment[4].price ?> per bottle</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="totalRow">
+          <td>Total cost</td>
+          <td><?= winner.total ?> (plus tax)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <form name="confirmForm" onsubmit="handleFormSubmit(this)">
+        <input type="hidden" name="uuid" value="<?= winner.uuid ?>" />
+        <? if (winner.claimed) { ?>
+          <input type="submit" name="submit" value="Allotment Claimed" class="claimed" disabled/>
+        <? } else  { ?>
+          <input type="submit" name="submit" value="Confirm Pickup" />
+        <? } ?>
+      </form>
+    </div>
+    
+    <div class="section">
+      <div id="claimedInfo">
+        <? if (winner.claimed && winner.claimedDate) { ?>
+          Claimed on <?= winner.claimedDate ?>
+        <? } ?>
+        </div>
+    </div>
+   
+  </div>
+
+</body>
+
+</html>

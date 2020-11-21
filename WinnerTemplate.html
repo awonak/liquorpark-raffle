@@ -1,0 +1,60 @@
+<div>
+<?= winner.full_name ?>,
+</div>
+
+<p>
+Congratulations! You were selected as a Liquor Park BCBS raffle winner! You have the opportunity to purchase the following bottle allotment:
+</p>
+
+<table>
+  <tr>
+    <td>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?= winner.url ?>&size=200x200" alt="Winner verification" title="Winner verification" />
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center">
+      <span style="font-size:36px"><?= winner.verification ?></span>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>2x <?= winner.allotment[0].name ?></td>
+    <td><?= winner.allotment[0].price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td>1x <?= winner.allotment[1].name ?></td>
+    <td><?= winner.allotment[1].price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td>1x <?= winner.allotment[2].name ?></td>
+    <td><?= winner.allotment[2].price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td>1x <?= winner.allotment[3].name ?></td>
+    <td><?= winner.allotment[3].price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td>1x <?= winner.allotment[4].name ?></td>
+    <td><?= winner.allotment[4].price ?> per bottle</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr class="totalRow">
+    <td>Total cost</td>
+    <td><?= winner.total ?> (plus tax)</td>
+  </tr>
+</table>
+
+<p>
+  You must bring this email to pick up your allotment by Friday, December 11th or your allotment will be forfeited.
+</p>
+
+<div>
+  <div>Cheers,</div>
+  <div>Liquor Park</div>
+</div>
