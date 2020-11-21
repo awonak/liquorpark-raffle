@@ -18,17 +18,9 @@ function doGet(e) {
   }
 
   // Render verification confirmation page.  
-  var t = HtmlService.createTemplateFromFile('Index');
-  t.data = {
-    verification: winner[2],
-    name: winner[1],
-    uuid: uuid,
-    claimed: winner[9] == "Yes",
-    claimedDate: winner[10],
-  }
-  
-  var output = t.evaluate();
-  output.addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  var output = HtmlService.createTemplateFromFile('Index')
+    .evaluate()
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 
   return output;
 }
@@ -53,12 +45,10 @@ function getWinner(uuid) {
   var winners = BOTTLE_ALLOTMENTS_SHEET.getDataRange().getValues();
   winners.shift();
   
-  var winner = null;
   for (var i = 0; i < winners.length; i++) {
     if (winners[i][12] == uuid) {
-      winner = winners[i];
-      break;
+      return new Winner(winners[i]);
     }
   }
-  return winner;
+  return null;
 }

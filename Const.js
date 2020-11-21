@@ -15,3 +15,4 @@ RAFFLE_PRIZES = 24;
 // Sheet references.
 FORM_RESPONSES_SHEET = SpreadsheetApp.getActive().getSheetByName('Form Responses 1');
 BOTTLE_ALLOTMENTS_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Allotments');
+BOTTLE_COST_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Cost');
