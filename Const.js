@@ -1,10 +1,10 @@
+// Apps Script > File > ProjectpProperties > Script ID
+SCRIPT_ID = ScriptApp.getScriptId();
+
 // Sheet references.
 FORM_RESPONSES_SHEET = SpreadsheetApp.getActive().getSheetByName('Form Responses 1');
 BOTTLE_ALLOTMENTS_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Allotments');
 BOTTLE_COST_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Cost');
-
-// Apps Script > File > ProjectpProperties > Script ID
-SCRIPT_ID = "AKfycbwh35PoWk_EwOwYcBgOiIUPwMcwJduf2icmP_xQOv27CnHljFk";
 
 // Form Response Column Indexes.
 FORM_EMAIL = 1;
