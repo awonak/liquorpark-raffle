@@ -42,12 +42,12 @@ function getWinner(uuid) {
   }
 
   // Grab the form responses to pick winners at random.
-  var winners = BOTTLE_ALLOTMENTS_SHEET.getDataRange().getValues();
-  winners.shift();
+  var rows = BOTTLE_ALLOTMENTS_SHEET.getDataRange().getValues();
+  rows.shift();
   
-  for (var i = 0; i < winners.length; i++) {
-    if (winners[i][12] == uuid) {
-      return new Winner(winners[i]);
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i][12] == uuid) {
+      return new Winner(rows[i]);
     }
   }
   return null;
