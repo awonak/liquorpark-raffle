@@ -1,5 +1,6 @@
 // Apps Script > File > ProjectpProperties > Script ID
 SCRIPT_ID = ScriptApp.getScriptId();
+WEBAPP_URL = ScriptApp.getService().getUrl();
 
 // Sheet references.
 FORM_RESPONSES_SHEET = SpreadsheetApp.getActive().getSheetByName('Form Responses 1');
