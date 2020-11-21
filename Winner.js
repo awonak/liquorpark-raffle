@@ -1,4 +1,6 @@
-
+/**
+ * Winner is a class representing the computed fields for a raffle winner.
+ */
 class Winner {
     constructor(row) { // Bottle Allotment Spreadsheet row
         this.email = row[0];
@@ -11,7 +13,7 @@ class Winner {
 
         // TODO: make this a const.
         this.url = `https://script.google.com/a/drinkliquorpark.com/macros/s/AKfycbwh35PoWk_EwOwYcBgOiIUPwMcwJduf2icmP_xQOv27CnHljFk/exec?uuid=${this.uuid}`
-        
+
         this.bottleCost = this._bottleCost();
         this.allotment = [];
         for (var i = 4, j = 0; i < 9; i++, j++) {

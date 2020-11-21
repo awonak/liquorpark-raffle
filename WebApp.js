@@ -1,5 +1,4 @@
 /**
- * 
  * HTTP Handler for pickup verification. 
  */
 function doGet(e) {
