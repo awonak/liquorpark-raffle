@@ -12,7 +12,7 @@ class Winner {
     this.claimedDate = row[10];
     
     // Current deployed web app URL.
-    this.url = `${WEBAPP_URL}?uuid=${this.uuid}`
+    this.url = `${WEBAPP_URL}?uuid=${this.uuid}`;
     
     this.bottleCost = this._bottleCost();
     this.allotment = [];
