@@ -1,6 +1,3 @@
-// Length of the short uuid for human verification.
-SHORT_UUID_LEN = 4;
-
 /**
  * A trigger-driven function that randomly assigns form responses to 
  * bottle allotments.
@@ -13,12 +10,12 @@ function doRaffleDrawing() {
   // Get Bottle Allotment sheet.
   var sheet = BOTTLE_ALLOTMENTS_SHEET;
   
-  for (var i = 2; i < RAFFLE_PRIZES; i++) {
+  for (var i = 2; i <= RAFFLE_PRIZES; i++) {
     var winner = pickRandomWinner(responses);
     if (winner == null) {
       break;
     }
-    Logger.log("Winner #" + i + ": ", winner);
+    Logger.log("doRaffleDrawing: Winner #" + i + ": ", winner);
     var uuid = Utilities.getUuid();
     var verification = shortUuid(uuid);
     var email = winner[FORM_EMAIL];
@@ -30,8 +27,6 @@ function doRaffleDrawing() {
     sheet.getRange(i, VERIFICATION_COL).setValue("=TO_TEXT(\""+verification+"\")");
     sheet.getRange(i, UUID_COL).setValue(uuid);
   }
-  
-  // TODO: lock sheet after winners chosen.
 }
 
 function shortUuid(uuid) {
@@ -40,11 +35,11 @@ function shortUuid(uuid) {
 
 function pickRandomWinner(responses) {
   if (responses.length == 0) {
-    Logger.log("No more responess.");
+    Logger.log("pickRandomWinner: No more responess.");
     return;
   }
   var n = newRandomNumberFromPool(responses.length);
-  // Pop and return row.
+  // Pop row from array and return row.
   return responses.splice(n, 1)[0];
 }
 

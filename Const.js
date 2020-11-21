@@ -1,3 +1,11 @@
+// Sheet references.
+FORM_RESPONSES_SHEET = SpreadsheetApp.getActive().getSheetByName('Form Responses 1');
+BOTTLE_ALLOTMENTS_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Allotments');
+BOTTLE_COST_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Cost');
+
+// Apps Script > File > ProjectpProperties > Script ID
+SCRIPT_ID = "AKfycbwh35PoWk_EwOwYcBgOiIUPwMcwJduf2icmP_xQOv27CnHljFk";
+
 // Form Response Column Indexes.
 FORM_EMAIL = 1;
 FORM_NAME = 2;
@@ -10,9 +18,11 @@ PICKUP_COL = 10;
 UUID_COL = 13;
 
 // The number of prizes for winners.
-RAFFLE_PRIZES = 24;
+RAFFLE_PRIZES = BOTTLE_ALLOTMENTS_SHEET.getLastRow();
 
-// Sheet references.
-FORM_RESPONSES_SHEET = SpreadsheetApp.getActive().getSheetByName('Form Responses 1');
-BOTTLE_ALLOTMENTS_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Allotments');
-BOTTLE_COST_SHEET = SpreadsheetApp.getActive().getSheetByName('Bottle Cost');
+// Length of the short uuid for human verification.
+SHORT_UUID_LEN = 4;
+
+WINNER_EMAIL_SUBJECT = "Liquor BCBS Park Raffle Winner!";
+WINNER_EMAIL_REPLY_TO = "team@drinkliquorpark.com";
+WINNER_EMAIL_NAME = "LiquorPark";

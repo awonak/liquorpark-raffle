@@ -2,7 +2,7 @@
  * HTTP Handler for pickup verification. 
  */
 function doGet(e) {
-  // Use this to lookup winner.
+  // Use uuid to lookup winner.
   var uuid = e.parameter.uuid;
   if (!uuid) {
     return HtmlService.createHtmlOutput('Missing verification number.')
@@ -36,7 +36,7 @@ function processForm(e) {
 
 function getWinner(uuid) {
   if (!uuid) {
-    console.log("getWinner() called without uuid");
+    console.log("getWinner: called without uuid");
     return null;
   }
 

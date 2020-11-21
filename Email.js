@@ -21,7 +21,9 @@ function sendEmail(winner) {
 
   MailApp.sendEmail({
     to: winner.email,
-    subject: "Liquor BCBS Park Raffle Winner!",
+    replyTo: WINNER_EMAIL_REPLY_TO,
+    name: WINNER_EMAIL_NAME,
+    subject: WINNER_EMAIL_SUBJECT,
     body: body,
     htmlBody: htmlBody
   });
