@@ -18,7 +18,6 @@ Now connect responses Spreadsheet to the Form > Responses > Select response dest
 
 Search for the recently copied spreadsheet name, default: "Copy of [TEMPLATE] Liquor Park BCBS Raffle".
 
-
 # Making changes to the scrips
 
 Get the ScriptID from Apps Script > File > ProjectpProperties > Script ID
@@ -28,7 +27,7 @@ $ clasp login
 $ clasp clone $SCRIPT_ID
 ```
 
-Make changes
+Make changes to the Apps Script code and push changes.
 
 ```
 $ clasp push
@@ -44,3 +43,37 @@ $ clasp deploy [version]
 
 https://script.google.com/a/drinkliquorpark.com/macros/s/$DEPLOYMENT_ID/exec
 
+# Running the Raffle
+
+Before opening the raffle, ensure all rules and dates are correct.
+
+Prepare winner allotment packs ahead of time.
+
+## Raffle Entries
+
+1. Share the Raffle Form URL during the open entry period.
+1. When Raffle entry period has ended, disable form:
+
+    Raffle Form > Responses > Accepting responses
+
+## Select Winners
+
+1. Manually review Form Responess in Spreadsheet.
+1. From the Spreadsheet, select Raffle Drawing > Pick Winners.
+1. Notify winners by selecting Raffle Drawing > Email Winners.
+1. Write the Verification number on each allotment for easy pickup.
+
+## Verify Winners
+
+1. Winners will present the winner email with QR code and Verification number.
+1. Scan code with phone to load verification webapp.
+   * Verification page is only accessible to @drinkliquorpark.com accounts.
+   * Verification page will confirm code and show allotment.
+   * If allotment has already been picked up, timestamp of pickup will be displayed.
+1. Click "Confirm Pickup" to update the Spreadsheet with pickup timestamp.
+1. (Optional) Instead of QR code, manually change spreadsheet "Claimed" column to "Yes".
+1. Distribute winner allotment.
+
+## Unclaimed Allotments
+
+After the pickup period has expired, remaining allotment will be made available to public.
