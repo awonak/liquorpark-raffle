@@ -24,6 +24,7 @@ RAFFLE_PRIZES = BOTTLE_ALLOTMENTS_SHEET.getLastRow();
 // Length of the short uuid for human verification.
 SHORT_UUID_LEN = 4;
 
-WINNER_EMAIL_SUBJECT = "Liquor BCBS Park Raffle Winner!";
+WINNER_EMAIL_SUBJECT = "Liquor Park BCBS Raffle Winner!";
 WINNER_EMAIL_REPLY_TO = "team@drinkliquorpark.com";
+WINNER_EMAIL_BCC = "team@drinkliquorpark.com";
 WINNER_EMAIL_NAME = "LiquorPark";

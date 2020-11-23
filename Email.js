@@ -21,6 +21,7 @@ function sendEmail(winner) {
 
   MailApp.sendEmail({
     to: winner.email,
+    bcc: WINNER_EMAIL_BCC,
     replyTo: WINNER_EMAIL_REPLY_TO,
     name: WINNER_EMAIL_NAME,
     subject: WINNER_EMAIL_SUBJECT,
@@ -38,10 +39,7 @@ function getEmailHtml(winner) {
 function getEmailText(winner) {
   var text = `${winner.full_name},
 
-Congratulations! You were selected as a Liquor Park BCBS raffle winner! You
-have the opportunity to purchase the following bottle allotment:
-
-${winner.verification}
+Congratulations! You have been selected as a Liquor Park BCBS raffle winner! Our very sophisticated computers have determined that you have the opportunity to purchase the following bottle allocation:
 
 2x ${winner.allotment[0].name}
 ${winner.allotment[0].price} per bottle
@@ -56,8 +54,9 @@ ${winner.allotment[4].price} per bottle
 
 Total cost ${winner.total} (plus tax)
 
-You must bring this email to pick up your allotment by Friday, December
-11th or your allotment will be forfeited.
+Verification: ${winner.verification}
+
+To claim this allocation, come in to Liquor Park by Friday, December 11th before closing (7:00 p.m.) to pick up and purchase. Any allocations not claimed by this time will be forfeited. Reply to this email with any questions.
 
 Cheers,
 Liquor Park`;
